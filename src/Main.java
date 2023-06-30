@@ -5,14 +5,33 @@ import java.util.Scanner;
 
 class Main{
     public static void main(String[] args){
-        arrayListSample();
-        arrayFromScanner();
-        arraySample();
-        whileArraySample();
-        doWhileSample();
-        hashMapSample();
+        selectFunction();
 
     }
+
+    public static void selectFunction(){
+        String[] functions = {"arraylistSample: 0", "arrayFromScanner: 1", "arraySample: 2", "whileArraySample: 3",
+                "doWhileSample: 4", "hashMapSample: 5" };
+        System.out.printf("These are all the functions you can call: %s\n", Arrays.toString(functions));
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Which one do you want to call? -Just type in it's index");
+        int callingFunction = Integer.parseInt(scanner.nextLine());
+
+        switch (callingFunction) {
+            case 0 -> arrayListSample();
+            case 1 -> arrayFromScanner();
+            case 2 -> arraySample();
+            case 3 -> whileArraySample();
+            case 4 -> doWhileSample();
+            case 5 -> hashMapSample();
+            default -> {
+                System.out.println("Please, input a valid number (0 - 5). Try again...");
+                selectFunction();
+            }
+        }
+        scanner.close();
+    }
+
     public static void arrayListSample() {
         ArrayList<Integer> numbers = new ArrayList<>();
 
