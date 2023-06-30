@@ -29,20 +29,29 @@ class Main{
                 selectFunction();
             }
         }
-        scanner.close();
     }
 
     public static void arrayListSample() {
+        System.out.println("This code uses an Array List. It adds integers raised to the power of >User Input< to the list using a for loop from 0 to >User Input<.");
+
+        Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> numbers = new ArrayList<>();
 
-        for (int i = 0; i <= 10; i++) {
-            numbers.add((int) Math.pow(i, 8));
+        System.out.print("It starts in 0 (zero) and goes up to (Inclusive): ");
+        int limit = Integer.parseInt(scanner.nextLine());
+        System.out.print("These numbers will be raised to the power of: ");
+        int power = Integer.parseInt(scanner.nextLine());
+
+        for (int i = 0; i <= limit; i++) {
+            numbers.add((int) Math.pow(i, power));
         }
 
-        System.out.println(numbers);
+        System.out.printf("The list: %s", numbers);
+        scanner.close();
     }
 
     public static void arrayFromScanner(){
+        System.out.println("This piece of code gives you an array of the size you want and with the elements you want. Then, it tells you your greatest and smallest number.");
         Scanner scanner = new Scanner(System.in);
         System.out.print("How many numbers do you want? ");
         int quantity = Integer.parseInt(scanner.nextLine());
@@ -53,20 +62,20 @@ class Main{
             numbers[i] = num;
         }
 
-        System.out.println(Arrays.toString(numbers));
-
         int[] sortedNumbers = Arrays.copyOf(numbers, numbers.length);
         Arrays.sort(sortedNumbers);
-        System.out.printf("Your greatest number is: %d\nAnd your smallest numbers is: %d\n", sortedNumbers[sortedNumbers.length - 1], sortedNumbers[0]);
+
+        System.out.printf("Your Array: %s\nYour greatest number is: %d\nYour smallest numbers is: %d\n", Arrays.toString(numbers),sortedNumbers[sortedNumbers.length - 1], sortedNumbers[0]);
         scanner.close();
     }
 
     public static void arraySample() {
+        System.out.println("Example of Array changing it's values based on index assignment.");
         int[] nums = {2, 4, 5, 3};
-        System.out.println(Arrays.toString(nums));
+        System.out.printf("Before: %s\n",Arrays.toString(nums));
         nums[2] = 22;
         nums[0] = 3;
-        System.out.println(Arrays.toString(nums));
+        System.out.printf("After: %s\n", Arrays.toString(nums));
     }
 
     public static void whileArraySample(){
@@ -75,6 +84,11 @@ class Main{
         strings[1] = "Vaz";
         strings[2] = "Souto";
         strings[3] = "Lima";
+        System.out.printf("""
+                        Example of code that turns an array of strings in a single word using a while loop. In this case each array element is a part of my name. It outputs my complete name
+                        The array: %s
+                        """,
+                Arrays.toString(strings));
 
         int word = 0;
         String completeName = "";
@@ -82,7 +96,7 @@ class Main{
             completeName += strings[word];
             if (word == strings.length - 1){
                 completeName += "\n";
-                System.out.println(completeName);
+                System.out.printf("The output: %s\n", completeName);
             }else{
                 completeName += ' ';
             }
@@ -100,15 +114,24 @@ class Main{
     }
 
     public static void hashMapSample(){
-        HashMap <String, Integer> grades = new HashMap<>();
-        grades.put("Math", 10);
-        grades.put("Computer Basics", 10);
-        grades.put("Python", 10);
-        grades.put("Java", 10);
-        System.out.println(grades);
+        System.out.println("This code stores your grades. Just input the subject and then your grades (numbers separated by whitespaces). To stop it, input '-' instead of the subject name.");
+        System.out.println("Input Examples: 'Programming'\n10 9.8 10");
+        Scanner scanner = new Scanner(System.in);
+        HashMap <String, double[]> grades = new HashMap<>();
+        while (true){
+            String key = scanner.nextLine();
+            if (key.equals("-")){
+                break;
+            }
 
-        grades.forEach((subject, grade) -> grades.replace(subject, grade + 10));
-        System.out.println(grades);
+            String[] valueArray = scanner.nextLine().split("\\s+");
+            double[] value = new double[valueArray.length];
+            for (int i = 0; i < valueArray.length; i ++){
+                value[i] = Double.parseDouble(valueArray[i]);
+            }
+            grades.put(key, value);
+        }
+        grades.forEach((keyPair, valuePair)-> System.out.println(keyPair + ": " + Arrays.toString(valuePair)));
     }
 
 }
