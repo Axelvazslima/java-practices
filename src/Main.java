@@ -105,12 +105,13 @@ class Main{
     }
 
     public static void doWhileSample(){
+        System.out.println("This is an example of a 'do... while loop', it runs the first time and then checks the condition > so it's always executed at least once.");
         int mainPoint = 1;
 
         do{
             System.out.println((mainPoint + 22) * 3);
             mainPoint++;
-        }while(mainPoint <= 10);
+        } while(mainPoint <= 10);
     }
 
     public static void hashMapSample(){
