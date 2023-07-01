@@ -1,17 +1,14 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
+import java.time.LocalDate;
 
 class Main{
     public static void main(String[] args){
         selectFunction();
-
     }
 
     public static void selectFunction(){
         String[] functions = {"arraylistSample: 0", "arrayFromScanner: 1", "arraySample: 2", "whileArraySample: 3",
-                "doWhileSample: 4", "hashMapSample: 5" };
+                "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6" };
         System.out.printf("These are all the functions you can call: %s\n", Arrays.toString(functions));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -24,6 +21,7 @@ class Main{
             case 3 -> whileArraySample();
             case 4 -> doWhileSample();
             case 5 -> hashMapSample();
+            case 6 -> userInfoSample();
             default -> {
                 System.out.println("Please, input a valid number (0 - 5). Try again...");
                 selectFunction();
@@ -133,6 +131,35 @@ class Main{
             grades.put(key, value);
         }
         grades.forEach((keyPair, valuePair)-> System.out.println(keyPair + ": " + Arrays.toString(valuePair)));
+    }
+
+    public static void userInfoSample(){
+        System.out.println("This function simulates a user input login");
+        User user = new User();
+        String userName = user.getName();
+        LocalDate userBirthDay = user.getBirthDay();
+        int userAge = user.age(userBirthDay);
+        System.out.printf("Welcome, %s!\n", userName);
+
+        Hobbies mainHobbies = new Hobbies();
+        String hobby = mainHobbies.hobby();
+        String sport = mainHobbies.sport();
+
+        HashMap<String, Object> info = new HashMap<>();
+        info.put("Name", userName);
+        info.put("Birthday", userBirthDay);
+        info.put("Age", userAge);
+        info.put("Hobby", hobby);
+        info.put("Sports", sport);
+
+        userName = userName.trim();
+        if (userName.toLowerCase().endsWith("s")){
+            System.out.printf("\n%s' information:\n", userName);
+        } else {
+            System.out.printf("\n%s's information:\n", userName);
+        }
+
+        info.forEach((key, value)-> System.out.println(key + ": " + value));
     }
 
 }
