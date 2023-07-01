@@ -141,9 +141,9 @@ class Main{
         int userAge = user.age(userBirthDay);
         System.out.printf("Welcome, %s!\n", userName);
 
-        Hobbies mainHobbies = new Hobbies();
-        String hobby = mainHobbies.hobby();
-        String sport = mainHobbies.sport();
+        Hobbies hobbies = new Hobbies();
+        String hobby = hobbies.hobby();
+        String sport = hobbies.sport();
 
         HashMap<String, Object> info = new HashMap<>();
         info.put("Name", userName);
@@ -161,5 +161,4 @@ class Main{
 
         info.forEach((key, value)-> System.out.println(key + ": " + value));
     }
-
 }
