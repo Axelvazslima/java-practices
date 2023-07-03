@@ -3,17 +3,17 @@ import java.time.LocalDate;
 
 class Main{
     public static void main(String[] args){
-        selectFunction();
+        selectMethod();
     }
 
-    public static void selectFunction(){
-        String[] functions = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7" };
-        System.out.printf("These are all the functions you can call: %s\n", Arrays.toString(functions));
+    public static void selectMethod(){
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7" };
+        System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
-        int callingFunction = Integer.parseInt(scanner.nextLine());
+        int callingMethod = Integer.parseInt(scanner.nextLine());
 
-        switch (callingFunction) {
+        switch (callingMethod) {
             case 0 -> arrayListSample();
             case 1 -> arrayFromScannerSample();
             case 2 -> arraySample();
@@ -23,8 +23,8 @@ class Main{
             case 6 -> userInfoSample();
             case 7 -> randomNumberGuessingGameSample();
             default -> {
-                System.out.println("Please, input a valid number (0 - 5). Try again...");
-                selectFunction();
+                System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
+                selectMethod();
             }
         }
     }
