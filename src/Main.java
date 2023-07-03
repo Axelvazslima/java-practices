@@ -249,6 +249,7 @@ class Main{
         System.out.println("This is a code example just for me to see the Polymorphism in practice.");
         Zebra zebra = new Zebra();
         Animals dog = new Animals();
-        System.out.printf("The dog is %s and the zebra is %s.\n", dog.color(), zebra.color());
+        Animals cat = new Animals();
+        System.out.printf("The dog is %s, the zebra is %s and the cat is %s.\n", dog.color(), zebra.color(), cat.color("white"));
     }
 }
