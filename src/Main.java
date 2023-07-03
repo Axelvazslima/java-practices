@@ -7,7 +7,7 @@ class Main{
     }
 
     public static void selectMethod(){
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7" };
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8" };
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -22,6 +22,7 @@ class Main{
             case 5 -> hashMapSample();
             case 6 -> userInfoSample();
             case 7 -> randomNumberGuessingGameSample();
+            case 8 -> pyramidSample();
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -201,6 +202,20 @@ class Main{
             } else {
                 System.out.printf("Wrong, try again... You still got %d tries left.\n", triesLeft);
             }
+        }
+        scanner.close();
+    }
+
+    public static void pyramidSample(){
+        System.out.println("This code prints a pyramid the size the user wants.");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("How tall do you want your pyramid to be?");
+        int sizeOfPyramid = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i <= sizeOfPyramid; i ++){
+            for (int j = 1; j <= i; j ++){
+                System.out.print("* ");
+            }
+            System.out.print("\n");
         }
     }
 }
