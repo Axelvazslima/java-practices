@@ -7,7 +7,7 @@ class Main{
     }
 
     public static void selectMethod(){
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8" };
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10" };
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -23,6 +23,8 @@ class Main{
             case 6 -> userInfoSample();
             case 7 -> randomNumberGuessingGameSample();
             case 8 -> pyramidSample();
+            case 9 -> palindromeNumberSample();
+            case 10 -> polymorphismSample();
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -217,5 +219,36 @@ class Main{
             }
             System.out.print("\n");
         }
+        scanner.close();
+    }
+
+    public static void palindromeNumberSample(){
+        System.out.println("A number is a palindrome when it's the same when read backwards, like: 121. This code checks if the user input number is a palindrome or not.");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        int numberInput = Integer.parseInt(scanner.nextLine());
+        String numberInputTester = Integer.toString(numberInput);
+        String numberInputComparison = "";
+        if (numberInputTester.length() > 1) {
+            for (int i = numberInputTester.length() - 1; i >= 0; i--) {
+                numberInputComparison += numberInputTester.charAt(i);
+            }
+            System.out.printf("%s backward is: %s. So, this number is ", numberInputTester, numberInputComparison);
+            if (numberInputComparison.equals(numberInputTester)) {
+                System.out.println("a Palindrome!");
+            } else {
+                System.out.println("not a Palindrome...");
+            }
+        }else{
+            System.out.println("A single number is always a palindrome. Try it with a number equal or bigger than 10.");
+        }
+        scanner.close();
+    }
+
+    public static void polymorphismSample(){
+        System.out.println("This is a code example just for me to see the Polymorphism in practice.");
+        Zebra zebra = new Zebra();
+        Animals dog = new Animals();
+        System.out.printf("The dog is %s and the zebra is %s.\n", dog.color(), zebra.color());
     }
 }
