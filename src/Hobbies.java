@@ -1,18 +1,18 @@
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class Hobbies {
-    private final Scanner scanner;
-
-    public Hobbies (){
-        scanner = new Scanner(System.in);
-    }
-    public String hobby() {
-        System.out.println("What do you like doing the most in your free time?");
-        return scanner.nextLine();
+    private final String hobby;
+    private final String[] sports;
+    Hobbies (String hobby, String sport){
+        this.hobby = hobby;
+        this.sports = sport.split(", ");
     }
 
-    public String sport(){
-        System.out.println("What sport do you like playing the most?");
-        return scanner.nextLine();
+    public String getHobby(){
+        return hobby;
+    }
+
+    public String getSports(){
+        return Arrays.toString(sports);
     }
 }

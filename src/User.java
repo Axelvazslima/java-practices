@@ -20,7 +20,7 @@ public class User {
         return LocalDate.parse(scanner.nextLine());
     }
 
-    public int age(LocalDate birthDay){
+    public int getAge(LocalDate birthDay){
         return Period.between(birthDay, LocalDate.now()).getYears();
     }
 }

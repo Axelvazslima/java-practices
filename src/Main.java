@@ -134,23 +134,24 @@ class Main{
     }
 
     public static void userInfoSample(){
+//        The code provided intentionally demonstrates different styles as an educational exercise. Specifically, the 'User' class uses methods to set the user: name, birthday and age, while the Hobbies class utilizes constructors with parameters to set the user: hobbies and favorite sports.
+        Scanner scanner = new Scanner(System.in);
         System.out.println("This function simulates a user input login");
         User user = new User();
         String userName = user.getName();
         LocalDate userBirthDay = user.getBirthDay();
-        int userAge = user.age(userBirthDay);
+        int userAge = user.getAge(userBirthDay);
         System.out.printf("Welcome, %s!\n", userName);
 
-        Hobbies hobbies = new Hobbies();
-        String hobby = hobbies.hobby();
-        String sport = hobbies.sport();
+        System.out.println("Input the thing you like doing the most in your free time the the sports you like playing the most -these must be separated by commas and a space.");
+        Hobbies hobbies = new Hobbies(scanner.nextLine(), scanner.nextLine());
 
         HashMap<String, Object> info = new HashMap<>();
         info.put("Name", userName);
         info.put("Birthday", userBirthDay);
         info.put("Age", userAge);
-        info.put("Hobby", hobby);
-        info.put("Sports", sport);
+        info.put("Hobby", hobbies.getHobby());
+        info.put("Sports", hobbies.getSports());
 
         userName = userName.trim();
         if (userName.toLowerCase().endsWith("s")){
