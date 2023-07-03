@@ -7,8 +7,7 @@ class Main{
     }
 
     public static void selectFunction(){
-        String[] functions = {"arraylistSample: 0", "arrayFromScanner: 1", "arraySample: 2", "whileArraySample: 3",
-                "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6" };
+        String[] functions = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7" };
         System.out.printf("These are all the functions you can call: %s\n", Arrays.toString(functions));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -16,12 +15,13 @@ class Main{
 
         switch (callingFunction) {
             case 0 -> arrayListSample();
-            case 1 -> arrayFromScanner();
+            case 1 -> arrayFromScannerSample();
             case 2 -> arraySample();
             case 3 -> whileArraySample();
             case 4 -> doWhileSample();
             case 5 -> hashMapSample();
             case 6 -> userInfoSample();
+            case 7 -> randomNumberGuessingGameSample();
             default -> {
                 System.out.println("Please, input a valid number (0 - 5). Try again...");
                 selectFunction();
@@ -48,7 +48,7 @@ class Main{
         scanner.close();
     }
 
-    public static void arrayFromScanner(){
+    public static void arrayFromScannerSample(){
         System.out.println("This piece of code gives you an array of the size you want and with the elements you want. Then, it tells you your greatest and smallest number.");
         Scanner scanner = new Scanner(System.in);
         System.out.print("How many numbers do you want? ");
@@ -161,5 +161,46 @@ class Main{
         }
 
         info.forEach((key, value)-> System.out.println(key + ": " + value));
+        scanner.close();
+    }
+
+    public static void randomNumberGuessingGameSample(){
+        System.out.println("This game is random number generator. You have to guess what's the correct number. You have three guesses if your difficult is above 5, otherwise you just have 1 try.");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("How difficult do you want this game to be? Just type in a number.");
+
+        int limitNum = Integer.parseInt(scanner.nextLine());
+        Random number = new Random();
+        int triesLeft;
+        String singularPlural;
+
+        if (limitNum > 5){
+            triesLeft = 3;
+            singularPlural = "chances";
+        }
+        else{
+            triesLeft = 1;
+            singularPlural = "chance";
+        }
+
+        System.out.printf("The game is getting started. You have %d %s to get it right. Good Luck!\n", triesLeft, singularPlural);
+        while (true){
+            int userGuess = Integer.parseInt(scanner.nextLine());
+            int target = number.ints(1, 0, limitNum).findFirst().getAsInt();
+            if (userGuess == target){
+                System.out.println("Congrats, you got it right!");
+                break;
+            }
+            triesLeft -= 1;
+            if (triesLeft < 1){
+                System.out.printf("You lost. The correct answer was: %s.\n", target);
+                break;
+            }
+            if (triesLeft == 1){
+                System.out.println("Wrong, try again... It's your last chance!");
+            } else {
+                System.out.printf("Wrong, try again... You still got %d tries left.\n", triesLeft);
+            }
+        }
     }
 }
