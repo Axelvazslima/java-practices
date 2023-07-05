@@ -228,13 +228,13 @@ class Main{
         System.out.print("Input a number: ");
         int numberInput = Integer.parseInt(scanner.nextLine());
         String numberInputTester = Integer.toString(numberInput);
-        String numberInputComparison = "";
+        StringBuilder numberInputComparison = new StringBuilder();
         if (numberInputTester.length() > 1) {
             for (int i = numberInputTester.length() - 1; i >= 0; i--) {
-                numberInputComparison += numberInputTester.charAt(i);
+                numberInputComparison.append(numberInputTester.charAt(i));
             }
-            System.out.printf("%s backward is: %s. So, this number is ", numberInputTester, numberInputComparison);
-            if (numberInputComparison.equals(numberInputTester)) {
+            System.out.printf("%s backwards is: %s. So, this number is ", numberInputTester, numberInputComparison);
+            if (numberInputComparison.toString().equals(numberInputTester)) {
                 System.out.println("a Palindrome!");
             } else {
                 System.out.println("not a Palindrome...");
