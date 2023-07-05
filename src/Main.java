@@ -7,7 +7,7 @@ class Main{
     }
 
     public static void selectMethod(){
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10" };
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11" };
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -25,6 +25,7 @@ class Main{
             case 8 -> pyramidSample();
             case 9 -> palindromeNumberSample();
             case 10 -> polymorphismSample();
+            case 11 -> diceLuckGame();
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -251,5 +252,21 @@ class Main{
         Animals dog = new Animals();
         Animals cat = new Animals();
         System.out.printf("The dog is %s, the zebra is %s and the cat is %s.\n", dog.color(), zebra.color(), cat.color("white"));
+    }
+
+    public static void diceLuckGame(){
+        System.out.println("This a luck game. You win if the numbers in the dice matches the target at the end of the game.");
+        Scanner scanner = new Scanner(System.in);
+        dicePlayGame dice = new dicePlayGame();
+        System.out.print("Input your target: ");
+        int target = Integer.parseInt(scanner.nextLine());
+        System.out.println("Input the amount of times the dice you roll: ");
+        int rolls = Integer.parseInt(scanner.nextLine());
+        if (dice.diceGame(target, rolls)){
+            System.out.println("Congrats! You won!");
+        } else{
+            System.out.println("You lost...");
+        }
+        scanner.close();
     }
 }
