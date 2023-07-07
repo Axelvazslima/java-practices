@@ -7,7 +7,7 @@ class Main{
     }
 
     public static void selectMethod(){
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11" };
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -26,6 +26,8 @@ class Main{
             case 9 -> palindromeNumberSample();
             case 10 -> polymorphismSample();
             case 11 -> diceLuckGame();
+            case 12 -> productsManagement();
+            case 13 -> factorial();
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -268,5 +270,40 @@ class Main{
             System.out.println("You lost...");
         }
         scanner.close();
+    }
+
+    public static void productsManagement(){
+        ArrayList<String> products = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Input the items for sell:");
+        String[] baseProducts = scanner.nextLine().split("\\s+");
+        for (String product : baseProducts) {
+            products.add(product);
+        }
+        while (true){
+            if (products.isEmpty()) break;
+            System.out.print("What do you want to buy? ");
+            String sold = scanner.nextLine();
+            try {
+                products.remove(sold);
+            } catch (Exception e){
+                System.out.println("This item does not exist.");
+            }
+        }
+        System.out.println("Items are all sold out.");
+        scanner.close();
+    }
+
+    public static void factorial(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("What number do you want it's factorial: ");
+        int number = Integer.parseInt(scanner.nextLine());
+
+        int counter = number;
+        while (counter > 0){
+            counter --;
+            number += counter;
+        }
+        System.out.println(number);
     }
 }
