@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class dicePlayGame{
+public class DicePlayGame {
 
     public boolean diceGame(int target, int rollTimes) {
         int acc = 0;

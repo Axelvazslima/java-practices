@@ -7,7 +7,7 @@ class Main{
     }
 
     public static void selectMethod(){
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14"};
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -29,6 +29,7 @@ class Main{
             case 12 -> productsManagement();
             case 13 -> factorial();
             case 14 -> employeeInfo();
+            case 15 -> currencyConverter();
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -260,7 +261,7 @@ class Main{
     public static void diceLuckGame(){
         System.out.println("This a luck game. You win if the numbers in the dice matches the target at the end of the game.");
         Scanner scanner = new Scanner(System.in);
-        dicePlayGame dice = new dicePlayGame();
+        DicePlayGame dice = new DicePlayGame();
         System.out.print("Input your target: ");
         int target = Integer.parseInt(scanner.nextLine());
         System.out.println("Input the amount of times the dice you roll: ");
@@ -322,6 +323,17 @@ class Main{
         employee.setSalary();
         employee.setTax();
         System.out.println(employee);
+        scanner.close();
+    }
+
+    public static void currencyConverter(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("How much does the other country currency cost: ");
+        double currency = Double.parseDouble(scanner.nextLine());
+        System.out.print("How much money do you want to exchange: ");
+        double myMoney = Double.parseDouble(scanner.nextLine());
+        double total = CurrencyConversor.conversor(myMoney, currency);
+        System.out.printf("You have $%.2f and want to trade for a currency that costs $%.2f. You will get $%.2f back", myMoney, currency, total);
         scanner.close();
     }
 }
