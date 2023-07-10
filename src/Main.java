@@ -7,7 +7,7 @@ class Main{
     }
 
     public static void selectMethod(){
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15"};
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -30,6 +30,7 @@ class Main{
             case 13 -> factorial();
             case 14 -> employeeInfo();
             case 15 -> currencyConverter();
+            case 16 -> bankLogin();
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -332,8 +333,27 @@ class Main{
         double currency = Double.parseDouble(scanner.nextLine());
         System.out.print("How much money do you want to exchange: ");
         double myMoney = Double.parseDouble(scanner.nextLine());
-        double total = CurrencyConversor.conversor(myMoney, currency);
+        double total = CurrencyConverter.converter(myMoney, currency);
         System.out.printf("You have $%.2f and want to trade for a currency that costs $%.2f. You will get $%.2f back", myMoney, currency, total);
         scanner.close();
+    }
+
+    public static void bankLogin(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Hello, please register yourself to proceed");
+
+        System.out.print("Your name: ");
+        String name = sc.nextLine();
+        System.out.print("Insert your password: ");
+        String password = sc.nextLine();
+        BankSystem user = new BankSystem(name, password);
+
+        user.setAccountId((int)(Math.random() * 999) + 100);
+        System.out.printf("Your bank id is going to be: %d\n", user.getAccountId());
+        user.setAccountId(user.getAccountId());
+
+        System.out.printf("Welcome, %s (%d)!\nHow much do you want to transfer at first?\n", user.getName(), user.getAccountId());
+        user.setInitialAmount(Float.parseFloat(sc.nextLine()));
+        System.out.printf("Thank you, %s! Now you have $%.2f in our bank.", user.getName(), user.getInitialAmount());
     }
 }
