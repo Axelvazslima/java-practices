@@ -7,7 +7,7 @@ class Main{
     }
 
     public static void selectMethod(){
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16"};
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -31,6 +31,7 @@ class Main{
             case 14 -> employeeInfo();
             case 15 -> currencyConverter();
             case 16 -> bankLogin();
+            case 17 -> counterPositivesNegativesZeros();
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -355,5 +356,24 @@ class Main{
         System.out.printf("Welcome, %s (%d)!\nHow much do you want to transfer at first?\n", user.getName(), user.getAccountId());
         user.setInitialAmount(Float.parseFloat(sc.nextLine()));
         System.out.printf("Thank you, %s! Now you have $%.2f in our bank.", user.getName(), user.getInitialAmount());
+    }
+
+    public static void counterPositivesNegativesZeros(){
+        System.out.println("This method is a loop that receives int inputs and tells how many of them were positive, negative and zeros");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Input how many numbers do you want to insert:");
+        int limit = Math.abs(Integer.parseInt(sc.nextLine()));
+
+        int positives = 0;
+        int zeros = 0;
+        int negatives = 0;
+        for(int i = 0; i < limit; i++){
+            int num = Integer.parseInt(sc.nextLine());
+            if (num > 0) positives ++;
+            if (num < 0) negatives ++;
+            if (num == 0) zeros ++;
+        }
+
+        System.out.printf("There were %d positives numbers, %d zeros and %d negative numbers.", positives, zeros, negatives);
     }
 }
