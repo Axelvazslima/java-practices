@@ -375,5 +375,7 @@ class Main{
         }
 
         System.out.printf("There were %d positives numbers, %d zeros and %d negative numbers.", positives, zeros, negatives);
+
+        sc.close();
     }
 }
