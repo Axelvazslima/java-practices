@@ -7,7 +7,7 @@ class Main{
     }
 
     public static void selectMethod(){
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17"};
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -32,6 +32,7 @@ class Main{
             case 15 -> currencyConverter();
             case 16 -> bankLogin();
             case 17 -> counterPositivesNegativesZeros();
+            case 18 -> matrix();
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -375,6 +376,32 @@ class Main{
         }
 
         System.out.printf("There were %d positives numbers, %d zeros and %d negative numbers.", positives, zeros, negatives);
+
+        sc.close();
+    }
+
+    public static void matrix(){
+        System.out.println("This method is a matrix practice. It receives an user input defining the dimensions of the square matrix. It prints out the Matrix (filled with random numbers from 0 to 100), it's size, the sum of it's elements and it's main diagonal - and the sum of it's elements.");
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("What size do you want this square Matrix to be: ");
+        int size = Integer.parseInt(sc.nextLine());
+        int[][] matrix = new int[size][size];
+        int[] diag = new int[size];
+
+        int matrixSum = 0;
+        int diagSum = 0;
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+                matrix[i][j] = (int)(Math.random() * 100);
+                if(i == j) {
+                    diag[i] = matrix[i][j];
+                    diagSum += matrix[i][j];
+                }
+                matrixSum += matrix[i][j];
+            }
+        }
+        System.out.printf("\nThe main matrix (%d x %d) is: %s (sum: %d).\nIt's main diagonal is: %s (sum: %d).", size, size, Arrays.deepToString(matrix), matrixSum,Arrays.toString(diag), diagSum);
 
         sc.close();
     }
