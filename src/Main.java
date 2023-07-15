@@ -7,7 +7,7 @@ class Main{
     }
 
     public static void selectMethod(){
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18"};
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -33,6 +33,8 @@ class Main{
             case 16 -> bankLogin();
             case 17 -> counterPositivesNegativesZeros();
             case 18 -> matrix();
+            case 19 -> reverseArray();
+            case 20 -> bubbleSort();
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -404,5 +406,50 @@ class Main{
         System.out.printf("\nThe main matrix (%d x %d) is: %s (sum: %d).\nIt's main diagonal is: %s (sum: %d).", size, size, Arrays.deepToString(matrix), matrixSum,Arrays.toString(diag), diagSum);
 
         sc.close();
+    }
+
+    public static void reverseArray(){
+        System.out.print("Choose the size of your array: ");
+        Scanner scanner = new Scanner(System.in);
+        int size = Integer.parseInt(scanner.nextLine());
+        int[] array = new int[size];
+        System.out.println("This code generates random numbers from 1 to 99 and adds them to an array. Finally, it reverses the array.");
+        for(int i = 0; i < size; i++){
+            array[i] = (int)(Math.random()*99);
+        }
+        System.out.printf("Original array: %s\n", Arrays.toString(array));
+        for(int j = 0; j < size / 2; j++){
+            int lastIndexPiece = size - 1 - j;
+            int start = array[j];
+            int finale = array[lastIndexPiece];
+            array[j] = finale;
+            array[lastIndexPiece] = start;
+        }
+        System.out.printf("Reversed Array: %s", Arrays.toString(array));
+        scanner.close();
+    }
+
+    public static void bubbleSort(){
+        System.out.println("This method sorts an array using the bubble sort algorithm.\nTo start, input the size of the array.");
+        Scanner sc = new Scanner(System.in);
+        int size = Integer.parseInt(sc.nextLine());
+        int[] array = new int[size];
+
+        for(int i = 0; i < size; i++){
+            array[i] = (int)(Math.random()*99);
+        }
+        System.out.printf("The original array: %s\n", Arrays.toString(array));
+
+        for(int j = 0; j < size; j++){
+            for(int k = (j+1); k < size; k++){
+                int cur_j = array[j];
+                int cur_k = array[k];
+                if(cur_k < cur_j){
+                    array[j] = cur_k;
+                    array[k] = cur_j;
+                }
+            }
+        }
+        System.out.printf("The sorted array: %s", Arrays.toString(array));
     }
 }
