@@ -7,7 +7,7 @@ class Main {
     }
 
     public static void selectMethod() {
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20"};
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -35,6 +35,10 @@ class Main {
             case 18 -> matrix();
             case 19 -> reverseArray();
             case 20 -> bubbleSort();
+            case 21 -> concatArray(new int[]{1, 2, 3, 4, 1, 10, 8});
+            case 22 -> arrayFromPermutation(new int[]{1, 2, 3, 6, 3, 0, 14, 10, 22});
+            case 23 -> defangIPAddress("1.1.1.1.0.1.2");
+            case 24 -> arrayStringsAreEqual(new String[] {"abc", "def"}, new String[] {"ab", "c", "de", "f"});
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -451,5 +455,59 @@ class Main {
         }
         System.out.printf("The sorted array: %s", Arrays.toString(array));
         sc.close();
+    }
+
+
+    public static void concatArray(int[] nums){
+        System.out.println("This method is a LeetCode exercise. It receives an array of ints as an parameter and prints the same array but concatenated with itself, like {1, 2, 3} turns {1, 2, 3, 1, 2, 3}\nThe array used for demonstration is: {1, 2, 3, 4, 1, 10, 8}\n");
+        int[] numsConcat = new int[nums.length * 2];
+        int indexAppend = nums.length;
+        for(int i = 0; i < nums.length; i++){
+            numsConcat[i] = nums[i];
+            numsConcat[indexAppend] = nums[i];
+            indexAppend++;
+        }
+        System.out.println("The returned array is: " + Arrays.toString(numsConcat));
+    }
+
+    public static void arrayFromPermutation(int[] nums){
+        System.out.println("This method is the solution of a LeetCode exercise, but I've changed it a little bit for defensive programming. It receives an array as it's parameter and prints another array with the values changed for (both the same size), for example, an array {2, 0, 1} results in {1, 2, 0}, because arrayCopy[i] = array[array[i]], but if the index doesnt exist it assigns arrayCopy[i] = array[i]\nThe array passed as argument for demonstration is {1, 2, 3, 6, 3, 0, 14, 10, 22}");
+
+        int[] ans = new int[nums.length];
+        for(int i = 0; i < nums.length; i++){
+            ans[i] = (nums[i] < nums.length) ? nums[nums[i]] : nums[i];
+        }
+
+        System.out.printf("The returned array is: %s", Arrays.toString(ans));
+    }
+
+    public static void defangIPAddress(String address) {
+        System.out.println("This method is a LeetCode exercise that receives as argument an IP address and prints it but defanged; Every '.' on the original address turns into '[.]'\nThe original IP address is '1.1.1.1.0.1.2' (for demonstration).");
+        StringBuilder add = new StringBuilder();
+        for (int i = 0; i < address.length(); i++){
+            if(Character.toString(address.charAt(i)).equals(".")){
+                add.append("[.]");
+            }else{
+                add.append(address.charAt(i));
+            }
+        }
+        System.out.printf("The defanged IP address: %s", add);
+    }
+
+    public static void arrayStringsAreEqual(String[] word1, String[] word2) {
+        System.out.println("This function compares two arrays, both passed as arguments, and prints a boolean (true, if they are equal and false, if they are not).\n");
+
+        StringBuilder firstWord = new StringBuilder();
+        for(String e : word1){
+            firstWord.append(e);
+        }
+
+        StringBuilder secondWord = new StringBuilder();
+        for(String el : word2){
+            secondWord.append(el);
+        }
+
+        System.out.printf("Arrays passed as arguments, for demonstration, and it's Strings:\nWord1 = %s and Word1 as a String: %s \nWord2 = %s // Word2 as a String = %s\n",  Arrays.toString(word1), firstWord, Arrays.toString(word2), secondWord);
+        System.out.println(firstWord.toString().contentEquals(secondWord));
     }
 }
