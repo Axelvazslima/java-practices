@@ -7,7 +7,7 @@ class Main {
     }
 
     public static void selectMethod() {
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24"};
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -39,6 +39,7 @@ class Main {
             case 22 -> arrayFromPermutation(new int[]{1, 2, 3, 6, 3, 0, 14, 10, 22});
             case 23 -> defangIPAddress("1.1.1.1.0.1.2");
             case 24 -> arrayStringsAreEqual(new String[] {"abc", "def"}, new String[] {"ab", "c", "de", "f"});
+            case 25 -> smallestEvenNumber();
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -509,5 +510,21 @@ class Main {
 
         System.out.printf("Arrays passed as arguments, for demonstration, and it's Strings:\nWord1 = %s and Word1 as a String: %s \nWord2 = %s // Word2 as a String = %s\n",  Arrays.toString(word1), firstWord, Arrays.toString(word2), secondWord);
         System.out.println(firstWord.toString().contentEquals(secondWord));
+    }
+
+    public static void smallestEvenNumber(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("This method is the solution of a leet code exercise to find the smallest even number multiple of a given integer.");
+        System.out.print("Input a number: ");
+        int n = Integer.parseInt(sc.nextLine());
+        int counter = 1;
+        while(true){
+            if(counter % n == 0 && counter % 2 == 0){
+                System.out.printf("\nThe smallest even number multiple of %d is %d.", n, counter);
+                break;
+            }
+            counter++;
+        }
+        sc.close();
     }
 }
