@@ -533,7 +533,7 @@ class Main {
     }
 
     public static void readFileSample(){
-        System.out.println("This method is a sample of a file reading in Java. You input th path of the file you want to read and it reads it.\nThis method works with scanners and a try-with-resources block as well.");
+        System.out.println("This method is a sample of a file reading in Java. You input the path of the file you want to read and it reads it.\nThis method works with scanners and a try-with-resources block as well.");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input the path of your file: ");
         String filePath = scanner.nextLine();
