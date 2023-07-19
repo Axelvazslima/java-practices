@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 import java.time.LocalDate;
 
@@ -7,7 +10,7 @@ class Main {
     }
 
     public static void selectMethod() {
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25"};
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25", "readFileSample: 26"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -40,6 +43,7 @@ class Main {
             case 23 -> defangIPAddress("1.1.1.1.0.1.2");
             case 24 -> arrayStringsAreEqual(new String[] {"abc", "def"}, new String[] {"ab", "c", "de", "f"});
             case 25 -> smallestEvenNumber();
+            case 26 -> readFileSample();
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -526,5 +530,21 @@ class Main {
             counter++;
         }
         sc.close();
+    }
+
+    public static void readFileSample(){
+        System.out.println("This method is a sample of a file reading in Java. You input th path of the file you want to read and it reads it.\nThis method works with scanners and a try-with-resources block as well.");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Input the path of your file: ");
+        String filePath = scanner.nextLine();
+        try (BufferedReader bR = new BufferedReader(new FileReader(filePath))) {
+            String line = bR.readLine();
+            while(line != null ){
+                System.out.println(line);
+                line = bR.readLine();
+            }
+        }catch (IOException e){
+            System.out.println("Error reading the file: " + e.getMessage());
+        }
     }
 }
