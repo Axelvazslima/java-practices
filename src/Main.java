@@ -10,7 +10,7 @@ class Main {
     }
 
     public static void selectMethod() {
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25", "readFileSample: 26"};
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25", "readFileSample: 26", "setUsagesSample: 27"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -44,6 +44,7 @@ class Main {
             case 24 -> arrayStringsAreEqual(new String[] {"abc", "def"}, new String[] {"ab", "c", "de", "f"});
             case 25 -> smallestEvenNumber();
             case 26 -> readFileSample();
+            case 27 -> setUsagesSample();
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -546,5 +547,27 @@ class Main {
         }catch (IOException e){
             System.out.println("Error reading the file: " + e.getMessage());
         }
+    }
+
+    public static void setUsagesSample(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("This method compares hashSets, treeSets and linkedHashSets");
+        Integer[] demonstrationArray = {10, 8, 6, 4, 9, 10, 7, 22, 11};
+        System.out.println("The array used as based for demonstration is: " + demonstrationArray);
+        HashSet<Integer> basicHashSet = new HashSet<>(Arrays.asList(demonstrationArray));
+        System.out.println("HashSet: " + basicHashSet + " -> It's faster (O(n)) but it isn't sorted.");
+        System.out.println("TreeSet: " + new TreeSet<>(Arrays.asList(demonstrationArray)) + " -> It's the slowest (O(log(n))) but it's sorted using 'CompareTo' method");
+        System.out.println("LinkedHashSet: " + new LinkedHashSet<>(Arrays.asList(demonstrationArray)) + " -> Obeys the order of it's insertion. It's speed is between the HashSet and the TreeSet.");
+
+        System.out.println("Notice that a set doesn't allow duplicates and that's why there is two numbers '10' in the array but it's only one in the set.\nThere are some built-in methods for this Data Type, like: addAll(other)[Union], retainAll(other)[Intersection] or removeAll(other)[Difference].\nAn there is a very interesting method called removeIf(condition): You pass in a lambda condition and it removes the elements that the condition is 'true'.");
+
+        basicHashSet.removeIf(x -> x % 2 == 0);
+        System.out.println("removeIf example to get rid of the even numbers in a hashSet: " + basicHashSet);
+
+
+
+
+
+        sc.close();
     }
 }
