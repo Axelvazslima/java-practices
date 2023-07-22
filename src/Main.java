@@ -10,7 +10,7 @@ class Main {
     }
 
     public static void selectMethod() {
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25", "readFileSample: 26", "setUsagesSample: 27"};
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25", "readFileSample: 26", "setUsagesSample: 27", "mapUsagesSample: 28"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -45,6 +45,7 @@ class Main {
             case 25 -> smallestEvenNumber();
             case 26 -> readFileSample();
             case 27 -> setUsagesSample();
+            case 28 -> mapUsagesSample();
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -564,10 +565,18 @@ class Main {
         basicHashSet.removeIf(x -> x % 2 == 0);
         System.out.println("removeIf example to get rid of the even numbers in a hashSet: " + basicHashSet);
 
-
-
-
-
         sc.close();
+    }
+
+    public static void mapUsagesSample(){
+        System.out.println("This method explains how the map works. Map is a key-value pair class. It also, just like the set, has three main subclasses:\n{hashMap (probably the most popular) - linear execution time O(1) and unordered;\nlinkedHashMap - Median speed and maintains the insertion order;\ntreeMap - The slowest: O(log(n)) and ordered using the compareTo method implementing the Comparable interface}");
+
+        Map<String, Integer> demonstrationMap = new LinkedHashMap<>();
+        System.out.printf("The demonstration Map is an empty LinkedHashMap: %s", demonstrationMap);
+        System.out.println("\nThere some methods for them:\n'.clear()' -> to remove all elements;\n'.keySet()' -> returns a set with it's keys;\n'.put(key, value)' -> to add the elements and that's how I added them;\n'.containsKey(key)' -> Boolean to check if certain key exists in the map;\n'.remove(key)' -> to remove a pair;\n'.get(key)' -> returns it's corresponding value\nAnd a lot more.");
+        demonstrationMap.put("Fav", 7);
+        demonstrationMap.put("Age", 1);
+        System.out.println("\nThat's how the map looks after I use the .put() method: " + demonstrationMap);
+        System.out.printf("\nFinally, this is an example of the '.get(key)' method passing 'Fav' as the argument: %d", demonstrationMap.get("Fav"));
     }
 }
