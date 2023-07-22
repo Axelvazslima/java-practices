@@ -1,7 +1,7 @@
 # Java OOP, Exercises, and Data Structures
 
 ## Object-Oriented Programming (OOP)
-Explore the core principles of OOP, including classes, objects, inheritance, polymorphism, and encapsulation. Mastering OOP is crucial for writing well-organized and reusable Java code. You will see more abput it in my other Java Repository, a [Chess Project](https://github.com/Axelvazslima/chess-java).
+Explore the core principles of OOP, including classes, objects, inheritance, polymorphism, and encapsulation. Mastering OOP is crucial for writing well-organized and reusable Java code. You will see more about it in my other Java Repository, a [Chess Project](https://github.com/Axelvazslima/chess-java).
 
 ## Exercises
 Challenge yourself with a variety of Java exercises. Strengthen your understanding of Java syntax, data manipulation, and problem-solving skills. Practice is key to becoming a proficient Java programmer.
