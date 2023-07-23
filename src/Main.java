@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 import java.time.LocalDate;
+import java.util.function.Predicate;
 
 class Main {
     public static void main(String[] args) {
@@ -10,7 +11,7 @@ class Main {
     }
 
     public static void selectMethod() {
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25", "readFileSample: 26", "setUsagesSample: 27", "mapUsagesSample: 28"};
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25", "readFileSample: 26", "setUsagesSample: 27", "mapUsagesSample: 28", "lambdaCreationAndSample: 29"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -46,6 +47,7 @@ class Main {
             case 26 -> readFileSample();
             case 27 -> setUsagesSample();
             case 28 -> mapUsagesSample();
+            case 29 -> lambdaCreationAndSample(new int[] {10, 20, 87, 154, 97, 358, 150, 99, 580, 22, 3, 2004, 2006}, num -> num > 150);
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -578,5 +580,17 @@ class Main {
         demonstrationMap.put("Age", 1);
         System.out.println("\nThat's how the map looks after I use the .put() method: " + demonstrationMap);
         System.out.printf("\nFinally, this is an example of the '.get(key)' method passing 'Fav' as the argument: %d", demonstrationMap.get("Fav"));
+    }
+
+    public static void lambdaCreationAndSample(int[] list, Predicate<Integer> condition){
+        System.out.println("The anonymous functions, so-called lambdas or arrow functions, are special ways of defining functions. They are usually used as argument for another method.\nIt's a very useful feature in 'functional programming', such as Java, JavaScript, and Python, for example.\nThis way of using a method is pretty common and there are already built-in methods in Java which require lambdas as their parameters, like the '.removeIf()' method. Either way, you can create your own method that receives an anonymous function as well.\nThe syntax: name(Predicate<Type> argName)\nThis very method receives a lambda as argument. The base syntax (args) -> { return condition }\nFor demonstration I used this lambda: num -> num > 150. The return keyword and the curly braces are optional in this case because it's just a one-line lambda method. It filters all the elements in a given array (passed as argument as well) greater than 150\nThis function sums all the elements greater than X, in this case 150, in a sequence of integers.");
+        System.out.println("The base array: {10, 20, 87, 154, 97, 358, 150, 99, 580, 22, 3, 2004, 2006}");
+        int filteredSum = 0;
+        for(int el : list) {
+            if (condition.test(el)) {
+                filteredSum += el;
+            }
+        }
+        System.out.printf("\nThe sum is: %d", filteredSum);
     }
 }
