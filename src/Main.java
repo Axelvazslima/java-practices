@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.*;
 import java.time.LocalDate;
 import java.util.function.Predicate;
+import java.sql.*;
 
 class Main {
     public static void main(String[] args) {
@@ -11,7 +12,7 @@ class Main {
     }
 
     public static void selectMethod() {
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25", "readFileSample: 26", "setUsagesSample: 27", "mapUsagesSample: 28", "lambdaCreationAndSample: 29"};
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25", "readFileSample: 26", "setUsagesSample: 27", "mapUsagesSample: 28", "lambdaCreationAndSample: 29", "searchInsertionPosition: 30"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -48,11 +49,13 @@ class Main {
             case 27 -> setUsagesSample();
             case 28 -> mapUsagesSample();
             case 29 -> lambdaCreationAndSample(new int[] {10, 20, 87, 154, 97, 358, 150, 99, 580, 22, 3, 2004, 2006}, num -> num > 150);
+            case 30 -> searchInsertionPosition(new int[] {1, 3, 4, 6, 8, 9, 10, 11, 17, 18, 22, 25, 28, 150});
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
             }
         }
+        scanner.close();
     }
 
     public static void arrayListSample() {
@@ -593,4 +596,19 @@ class Main {
         }
         System.out.printf("\nThe sum is: %d", filteredSum);
     }
+
+    public static void searchInsertionPosition(int[] nums){
+        System.out.println("This method is a leetcode exercise solution that tells the user where would be placed it's input number in a given array, if it's not already there - if it's then it just tells them it's index.\nThe base array: {1, 3, 4, 6, 8, 9, 10, 11, 17, 18, 22, 25, 28, 150}.\nInput your target number:");
+        int output = nums.length;
+        Scanner sc = new Scanner(System.in);
+        int target = Integer.parseInt(sc.nextLine());
+        for (int i = 0; i < nums.length; i++){
+            if (nums[i] >= target){
+                output = i;
+                break;
+            }
+        }
+        System.out.println("\nIt's position is, or should be: " + output);
+    }
 }
+
