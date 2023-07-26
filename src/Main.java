@@ -4,15 +4,15 @@ import java.io.IOException;
 import java.util.*;
 import java.time.LocalDate;
 import java.util.function.Predicate;
-import java.sql.*;
 
 class Main {
     public static void main(String[] args) {
+        Locale.setDefault(Locale.US);
         selectMethod();
     }
 
     public static void selectMethod() {
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25", "readFileSample: 26", "setUsagesSample: 27", "mapUsagesSample: 28", "lambdaCreationAndSample: 29", "searchInsertionPosition: 30"};
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25", "readFileSample: 26", "setUsagesSample: 27", "mapUsagesSample: 28", "lambdaCreationAndSample: 29", "searchInsertionPosition: 30", "targetAndBonus: 31"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -50,6 +50,7 @@ class Main {
             case 28 -> mapUsagesSample();
             case 29 -> lambdaCreationAndSample(new int[] {10, 20, 87, 154, 97, 358, 150, 99, 580, 22, 3, 2004, 2006}, num -> num > 150);
             case 30 -> searchInsertionPosition(new int[] {1, 3, 4, 6, 8, 9, 10, 11, 17, 18, 22, 25, 28, 150});
+            case 31 -> targetAndBonus();
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -609,6 +610,27 @@ class Main {
             }
         }
         System.out.println("\nIt's position is, or should be: " + output);
+    }
+
+    public static void targetAndBonus(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("This method helps you figure out how many products you need to sell to meet a target and earn a bonus in your salary. First, you count the total number of products you have in your deposit. Then, your selling target is calculated as 20% of that total, but it's limited to 20.\nThe bonus you get in your salary is based on how many products you sell beyond twice your target amount. The formula for calculating the bonus is simple: 5 times the quantity of products sold above twice your target.\nThe number of products in your store:");
+        int products = Integer.parseInt(sc.nextLine());
+        double target;
+        double percentage = ((double)products / 100) * 20;
+
+        System.out.println(percentage);
+
+        if (percentage < 20){
+            target = percentage;
+        } else {
+            target = 20;
+        }
+
+        double bonus = 5 * (products - (2 * target));
+        System.out.printf("The target is: %.2f. And the bonus is %.2f", target, bonus);
+
+        sc.close();
     }
 }
 
