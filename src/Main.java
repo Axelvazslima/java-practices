@@ -12,7 +12,7 @@ class Main {
     }
 
     public static void selectMethod() {
-        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25", "readFileSample: 26", "setUsagesSample: 27", "mapUsagesSample: 28", "lambdaCreationAndSample: 29", "searchInsertionPosition: 30", "targetAndBonus: 31"};
+        String[] methods = {"arraylistSample: 0", "arrayFromScannerSample: 1", "arraySample: 2", "whileArraySample: 3", "doWhileSample: 4", "hashMapSample: 5", "userInfoSample: 6", "randomNumberGuessingGame: 7", "pyramidSample: 8", "palindromeNumberSample: 9", "polymorphismSample: 10", "diceLuckGame: 11", "productsManagement: 12", "factorial: 13", "employeeInfo: 14", "currencyConverter: 15", "bankLogin: 16", "counterPositivesNegativesZeros: 17", "matrix: 18", "reverseArray: 19", "bubbleSort: 20", "concatArray: 21", "arrayFromPermutation: 22", "defangIPAddress: 23", "arrayStringsAreEqual: 24", "smallestEvenNumber: 25", "readFileSample: 26", "setUsagesSample: 27", "mapUsagesSample: 28", "lambdaCreationAndSample: 29", "searchInsertionPosition: 30", "targetAndBonus: 31", "insertingElementInArray: 32"};
         System.out.printf("These are all the methods you can call: %s\n", Arrays.toString(methods));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which one do you want to call? -Just type in it's index");
@@ -51,6 +51,7 @@ class Main {
             case 29 -> lambdaCreationAndSample(new int[] {10, 20, 87, 154, 97, 358, 150, 99, 580, 22, 3, 2004, 2006}, num -> num > 150);
             case 30 -> searchInsertionPosition(new int[] {1, 3, 4, 6, 8, 9, 10, 11, 17, 18, 22, 25, 28, 150});
             case 31 -> targetAndBonus();
+            case 32 -> insertingElementInArray(Integer.parseInt(scanner.nextLine()));
             default -> {
                 System.out.printf("Please, input a valid number (0 - %d). Try again...\n", methods.length - 1);
                 selectMethod();
@@ -631,6 +632,22 @@ class Main {
         System.out.printf("The target is: %.2f. And the bonus is %.2f", target, bonus);
 
         sc.close();
+    }
+
+    public static void insertingElementInArray(int element){
+        int[] nums = {1, 3, 6, 8, 10, 7, 45, 5, 8, 9, 10};
+        int[] new_nums = new int[nums.length + 1];
+        int j = 0;
+        for (int i = 0; j < nums.length; i++){
+            if (i == 5) {
+                new_nums[i] = element;
+                continue;
+            }
+                new_nums[i] = nums[j];
+                j++;
+        }
+        System.out.println("Before: " + Arrays.toString(nums));
+        System.out.println("After: " + Arrays.toString(new_nums));
     }
 }
 
